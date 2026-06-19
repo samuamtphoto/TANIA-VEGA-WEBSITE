@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tania Vega – Artista Musical</title>
+  <meta name="description" content="Web oficial de Tania Vega, artista musical. Música, conciertos, noticias y más." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/glow-night" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #e040fb;
+      --accent2: #7c4dff;
+      --accent3: #00e5ff;
+      --dark: #0a0a0f;
+      --dark2: #12121a;
+      --dark3: #1a1a2e;
+      --text: #f0f0f0;
+      --text-muted: #aaaaaa;
+      --gradient: linear-gradient(135deg, var(--accent), var(--accent2));
+      --gradient2: linear-gradient(135deg, var(--accent2), var(--accent3));
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ──────────────── NAV ──────────────── */
+    @keyframes nav-glow-pulse {
+      0%, 100% {
+        box-shadow:
+          0 4px 20px rgba(224,64,251,0.12),
+          0 8px 40px rgba(124,77,255,0.08);
+      }
+      50% {
+        box-shadow:
+          0 4px 30px rgba(224,64,251,0.22),
+          0 8px 50px rgba(124,77,255,0.15);
+      }
+    }
+
+    @keyframes nav-border-shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 1rem 2.5rem;
+      background: rgba(10,10,15,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: none;
+      transition: all 0.3s ease;
+      animation: nav-glow-pulse 4s ease infinite;
+    }
+
+    nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(124,77,255,0.4) 20%,
+        rgba(224,64,251,0.9) 50%,
+        rgba(124,77,255,0.4) 80%,
+        transparent 100%
+      );
+      background-size: 200% auto;
+      animation: nav-border-shimmer 4s linear infinite;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: brightness(1.1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      list-style: none;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-social {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+
+    .nav-social a {
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .nav-social a:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .nav-social svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
+    /* ──────────────── HERO ──────────────── */
+    #home {
+      height: 100vh;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2) 0%,
+        rgba(0,0,0,0.3) 50%,
+        rgba(0,0,0,0.7) 100%
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding-bottom: 5rem;
+    }
+
+    .hero-title {
+      font-family: 'GLOW NIGHT', 'Playfair Display', serif;
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 1;
+      font-style: normal;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 0.7s 0.1s ease both;
+    }
+
+    .hero-title span {
+      color: white;
+      -webkit-text-fill-color: white;
+    }
+
+    .hero-role {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      animation: fadeInUp 0.7s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInUp 0.7s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--gradient);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 20px rgba(224,64,251,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(224,64,251,0.6);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: var(--text);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-decoration: none;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.4);
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.6; }
+    }
+
+    /* ──────────────── SECTIONS COMMON ──────────────── */
+    section { padding: 6rem 2rem; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: rgba(124,77,255,0.15);
+      border: 1px solid rgba(124,77,255,0.4);
+      color: var(--accent2);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-style: italic;
+      line-height: 1.2;
+    }
+
+    .section-title span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ──────────────── BIOGRAFÍA ──────────────── */
+    #biografia { background: var(--dark); }
+
+    .bio-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .bio-image {
+      position: relative;
+    }
+
+    .bio-image img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 24px;
+      display: block;
+    }
+
+    .bio-image img.glow-active {
+      animation: photo-blink-glow 1.4s ease forwards, photo-glow-pulse 3s 1.4s ease infinite;
+    }
+
+    /* Glow text — for GLOW NIGHT font elements */
+    .glow-text-active {
+      animation: text-blink-glow 1.4s ease forwards, text-glow-pulse 3s 1.4s ease infinite;
+    }
+
+    @keyframes text-blink-glow {
+      0%   { filter: drop-shadow(0 0 0px transparent); }
+      7%   { filter: drop-shadow(0 0 18px rgba(224,64,251,1)) drop-shadow(0 0 36px rgba(124,77,255,0.9)); }
+      21%  { filter: drop-shadow(0 0 0px transparent); }
+      28%  { filter: drop-shadow(0 0 18px rgba(224,64,251,1)) drop-shadow(0 0 36px rgba(124,77,255,0.9)); }
+      43%  { filter: drop-shadow(0 0 0px transparent); }
+      50%  { filter: drop-shadow(0 0 18px rgba(224,64,251,1)) drop-shadow(0 0 36px rgba(124,77,255,0.9)); }
+      100% { filter: drop-shadow(0 0 8px rgba(224,64,251,0.6)) drop-shadow(0 0 20px rgba(124,77,255,0.4)); }
+    }
+
+    @keyframes text-glow-pulse {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(224,64,251,0.6)) drop-shadow(0 0 20px rgba(124,77,255,0.4)); }
+      50%       { filter: drop-shadow(0 0 14px rgba(224,64,251,0.85)) drop-shadow(0 0 30px rgba(124,77,255,0.6)); }
+    }
+
+    @keyframes photo-blink-glow {
+      /* Flash 1 */
+      0%   { box-shadow: none; }
+      7%   { box-shadow: 0 0 40px rgba(224,64,251,1), 0 0 80px rgba(124,77,255,0.8), 0 0 120px rgba(224,64,251,0.5); }
+      /* Gap 0.2s */
+      21%  { box-shadow: none; }
+      /* Flash 2 */
+      28%  { box-shadow: 0 0 40px rgba(224,64,251,1), 0 0 80px rgba(124,77,255,0.8), 0 0 120px rgba(224,64,251,0.5); }
+      /* Gap 0.2s */
+      43%  { box-shadow: none; }
+      /* Flash 3 */
+      50%  { box-shadow: 0 0 40px rgba(224,64,251,1), 0 0 80px rgba(124,77,255,0.8), 0 0 120px rgba(224,64,251,0.5); }
+      /* Settle into permanent glow */
+      100% { box-shadow: 0 0 25px rgba(224,64,251,0.55), 0 0 50px rgba(124,77,255,0.35); }
+    }
+
+    @keyframes photo-glow-pulse {
+      0%, 100% { box-shadow: 0 0 25px rgba(224,64,251,0.55), 0 0 50px rgba(124,77,255,0.35); }
+      50%       { box-shadow: 0 0 35px rgba(224,64,251,0.75), 0 0 70px rgba(124,77,255,0.5); }
+    }
+
+    .bio-image::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 26px;
+      background: var(--gradient);
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .bio-image::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 20px;
+      right: -20px;
+      height: 100%;
+      border-radius: 24px;
+      background: rgba(124,77,255,0.15);
+      z-index: -2;
+    }
+
+    .bio-text .section-tag { margin-bottom: 1rem; display: inline-block; }
+
+    .bio-text h2 {
+      font-family: 'GLOW NIGHT', 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .bio-text h2 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .bio-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+    }
+
+    .bio-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .bio-stat-item { text-align: center; }
+
+    .bio-stat-number {
+      font-family: 'GLOW NIGHT', serif;
+      font-size: 2.2rem;
+      text-transform: uppercase;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1.1;
+    }
+
+    .bio-stat-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    @media (max-width: 900px) {
+      .bio-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+      .bio-image img { height: 400px; }
+    }
+
+    /* ──────────────── MÚSICA ──────────────── */
+    #musica { background: var(--dark2); }
+
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 5rem 3.5rem;
+    }
+
+    .music-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      opacity: 0;
+    }
+
+    .music-card.animate-in {
+      animation: musicCardIn 0.7s ease forwards;
+    }
+
+    @keyframes musicCardIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .music-cover {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .music-cover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(124,77,255,0.35);
+    }
+
+    .music-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .music-cover:hover img {
+      transform: scale(1.04);
+    }
+
+    .music-card-body {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .music-title {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .music-proximamente {
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #b47aff;
+      margin-top: -0.3rem;
+    }
+
+    .music-listen-btn {
+      display: inline-flex;
+      align-items: center;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.35);
+      padding: 0.6rem 2rem;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      cursor: default;
+    }
+
+    .music-platform-icons {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .music-platform-icons a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      text-decoration: none;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .music-platform-icons a.spotify-icon {
+      color: #1DB954;
+    }
+    .music-platform-icons a.spotify-icon:hover {
+      background: rgba(29,185,84,0.15);
+      border-color: #1DB954;
+      transform: translateY(-2px);
+    }
+
+    .music-platform-icons a.youtube-icon {
+      color: #FF0000;
+    }
+    .music-platform-icons a.youtube-icon:hover {
+      background: rgba(255,0,0,0.15);
+      border-color: #FF0000;
+      transform: translateY(-2px);
+    }
+
+    .music-platform-icons svg {
+      width: 16px; height: 16px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    /* ──────────────── PLATAFORMAS ──────────────── */
+    #plataformas {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plataformas-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    #plataformas .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .platform-card {
+      background: var(--dark2);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.06);
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .platform-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--platform-color, var(--accent));
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+
+    .platform-icon {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background: var(--platform-bg, rgba(224,64,251,0.15));
+    }
+
+    .platform-icon i {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .amazon-music-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    .amazon-music-logo span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #00A8CC;
+      line-height: 1.2;
+    }
+
+    .amazon-music-logo svg {
+      width: 28px;
+      height: 10px;
+      fill: #00A8CC;
+    }
+
+    .platform-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .platform-action {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ──────────────── REDES ──────────────── */
+    #redes { background: var(--dark2); }
+
+    .redes-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .redes-photo {
+      position: relative;
+    }
+
+    .redes-photo img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 24px;
+      display: block;
+    }
+
+    .redes-photo img.glow-active {
+      animation: photo-blink-glow 1.4s ease forwards, photo-glow-pulse 3s 1.4s ease infinite;
+    }
+
+    .redes-photo::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 26px;
+      background: var(--gradient);
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .redes-photo::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 20px;
+      right: -20px;
+      height: 100%;
+      border-radius: 24px;
+      background: rgba(124,77,255,0.15);
+      z-index: -2;
+    }
+
+    .redes-content { display: flex; flex-direction: column; gap: 2rem; }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .social-card {
+      border-radius: 24px;
+      padding: 2rem;
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.15);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .social-card:hover { transform: translateY(-5px); }
+    .social-card:hover::before { opacity: 1; }
+
+    .social-card.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); box-shadow: 0 10px 30px rgba(220,39,67,0.35); }
+    .social-card.tiktok    { background: linear-gradient(135deg, #010101, #2d2d2d); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #333; }
+    .social-card.facebook  { background: linear-gradient(135deg, #1877F2, #0d5bb5); box-shadow: 0 10px 30px rgba(24,119,242,0.35); }
+    .social-card.threads   { background: linear-gradient(135deg, #101010, #2a2a2a); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #444; }
+    .social-icon svg { width: 32px; height: 32px; fill: white; display: block; }
+
+    .social-icon {
+      font-size: 2.2rem;
+      flex-shrink: 0;
+    }
+
+    .social-info { flex: 1; }
+
+    .social-name {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .social-handle {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .social-arrow {
+      font-size: 1.2rem;
+      opacity: 0.7;
+    }
+
+    /* ──────────────── AGENDA ──────────────── */
+    #noticias { background: var(--dark); }
+
+    /* ──────────────── AGENDA & PRENSA ──────────────── */
+    .agenda-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .agenda-block {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .agenda-block-header {
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .agenda-block-header.conciertos {
+      background: linear-gradient(135deg, rgba(124,77,255,0.25), rgba(224,64,251,0.15));
+    }
+
+    .agenda-block-header.prensa {
+      background: linear-gradient(135deg, rgba(29,185,84,0.15), rgba(0,168,204,0.15));
+    }
+
+    .agenda-block-icon { display: none; }
+
+    .agenda-block-title {
+      font-family: 'GLOW NIGHT', 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+
+    .agenda-block-title span { color: var(--accent); }
+
+    .agenda-list {
+      padding: 1rem 0;
+    }
+
+    .agenda-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      padding: 1.2rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+
+    .agenda-item:last-child { border-bottom: none; }
+    .agenda-item:hover { background: rgba(255,255,255,0.03); }
+
+    .agenda-item-date {
+      text-align: center;
+      min-width: 48px;
+      flex-shrink: 0;
+    }
+
+    .agenda-item-day {
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    .agenda-item-month {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .agenda-item-info { flex: 1; }
+
+    .agenda-item-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .agenda-item-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .agenda-item-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .badge-pronto  { background: rgba(224,64,251,0.2); color: var(--accent); }
+    .badge-medio   { background: rgba(0,168,204,0.2);  color: #00A8CC; }
+    .badge-pasado  { background: rgba(255,255,255,0.08); color: var(--text-muted); }
+
+    .agenda-empty {
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ──────────────── CONTACTO ──────────────── */
+    #contacto {
+      background: var(--dark2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contacto::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(124,77,255,0.15) 0%, transparent 60%);
+    }
+
+    .contact-wrapper {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-photo {
+      position: relative;
+      width: 380px;
+      flex-shrink: 0;
+    }
+
+    .contact-photo img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 24px;
+      display: block;
+    }
+
+    .contact-photo img.glow-active {
+      animation: photo-blink-glow 1.4s ease forwards, photo-glow-pulse 3s 1.4s ease infinite;
+    }
+
+    .contact-photo::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 26px;
+      background: var(--gradient);
+      z-index: -1;
+      opacity: 0.6;
+    }
+
+    .contact-photo::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 20px;
+      right: -20px;
+      height: 100%;
+      border-radius: 24px;
+      background: rgba(124,77,255,0.15);
+      z-index: -2;
+    }
+
+    .contact-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info h2 span {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: rgba(224,64,251,0.1);
+      border: 1px solid rgba(224,64,251,0.3);
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .contact-email:hover {
+      background: rgba(224,64,251,0.2);
+      transform: translateY(-2px);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 0.85rem 1.1rem;
+      color: var(--text);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+      resize: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(224,64,251,0.1);
+    }
+
+    .form-group select option { background: var(--dark2); }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .btn-submit {
+      background: var(--gradient);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 4px 20px rgba(224,64,251,0.4);
+      margin-top: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(224,64,251,0.6);
+    }
+
+    /* ──────────────── FOOTER ──────────────── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'GLOW NIGHT', 'Playfair Display', serif;
+      font-size: 2rem;
+      color: white;
+      -webkit-text-fill-color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo.glow-text-active {
+      animation: text-blink-glow 1.4s ease forwards, text-glow-pulse 3s 1.4s ease infinite;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-social a {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+      background: rgba(224,64,251,0.2);
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    .footer-copy a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .footer-legal-links {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-legal-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .footer-legal-links a:hover { color: var(--accent); }
+
+    .footer-legal-links span {
+      color: rgba(255,255,255,0.2);
+      font-size: 0.72rem;
+    }
+
+    /* ──────────────── COOKIE BANNER ──────────────── */
+    #cookie-banner {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 3rem);
+      max-width: 800px;
+      z-index: 9999;
+      background: rgba(18,18,26,0.97);
+      border: 1px solid rgba(224,64,251,0.3);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      box-shadow: 0 8px 40px rgba(124,77,255,0.2), 0 0 0 1px rgba(224,64,251,0.08);
+      backdrop-filter: blur(16px);
+      animation: fadeInUp 0.4s ease;
+    }
+
+    .cookie-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .cookie-text {
+      flex: 1;
+    }
+
+    .cookie-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .cookie-text p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .cookie-text a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .cookie-text a:hover { text-decoration: underline; }
+
+    .cookie-actions {
+      display: flex;
+      gap: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .cookie-btn {
+      padding: 0.55rem 1.2rem;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .cookie-reject {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text-muted);
+    }
+
+    .cookie-reject:hover {
+      border-color: rgba(255,255,255,0.5);
+      color: var(--text);
+    }
+
+    .cookie-accept {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+    }
+
+    .cookie-accept:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 600px) {
+      #cookie-banner {
+        flex-direction: column;
+        text-align: center;
+        bottom: 1rem;
+        left: 1rem;
+        right: 1rem;
+        width: auto;
+        transform: none;
+      }
+      .cookie-actions { justify-content: center; }
+    }
+
+    /* ──────────────── ANIMATIONS ──────────────── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ──────────────── RESPONSIVE ──────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; grid-template-columns: 1fr auto; }
+      .nav-links { display: none; }
+      .nav-social .hamburger { display: flex; }
+      .nav-social a[aria-label] { display: none; }
+      .hero-title { font-size: clamp(2.8rem, 10vw, 5rem); white-space: normal; text-align: center; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.2rem; }
+      .platforms-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ──────────────── SCROLLBAR ──────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      <img src="logo tania vega.PNG" alt="Tania Vega" />
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#biografia">Biografía</a></li>
+      <li><a href="#musica">Música</a></li>
+      <li><a href="#plataformas">Plataformas</a></li>
+      <li><a href="#redes">Redes</a></li>
+      <li><a href="#noticias">Noticias</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <div class="nav-social">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/taniavegamusic?igsh=Y3Fiam5sNzg3Nmtt" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/@taniavegaoficialmusic" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      </a>
+      <!-- Spotify -->
+      <a href="https://open.spotify.com/intl-es/artist/5gFJM79JY3q2zBFFEDd0Xp?si=oP_sQ0lMQZOhKSwiHZ7eyg" target="_blank" rel="noopener" aria-label="Spotify">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+      </a>
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="video landing tania vega.mov" type="video/mp4">
+      <source src="video landing tania vega.mov" type="video/quicktime">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Tania <span>Vega</span>
+      </h1>
+      <p class="hero-role">Cantante y Compositora</p>
+      <div class="hero-actions">
+        <a href="#musica" class="btn-primary">
+          <span>▶</span> Escuchar Música
+        </a>
+        <a href="#contacto" class="btn-secondary">
+          Contactar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIOGRAFÍA -->
+  <section id="biografia">
+    <div class="container">
+      <div class="bio-wrapper">
+        <div class="bio-image reveal">
+          <img src="FOTOS TANIA/FOTO BIOGRAFIA.JPEG" alt="Tania Vega" />
+        </div>
+        <div class="bio-text reveal">
+          <span class="section-tag">✦ Biografía</span>
+          <h2>Tania <span>Vega</span></h2>
+          <p>Nacida en Valencia, Tania Vega es cantante, compositora y productora musical. Actualmente se encuentra desarrollando su carrera artística de forma independiente, consolidando una propuesta auténtica y personal dentro del panorama musical contemporáneo.</p>
+          <p>Desde su debut como solista en 2024, ha lanzado siete singles originales, los cuales reflejan su sensibilidad artística y versatilidad creativa. Actualmente continúa trabajando en nuevas composiciones que formarán parte de sus próximos lanzamientos.</p>
+          <p>Ha llevado su música en directo a diversas salas de Madrid y Valencia, y se encuentra en constante búsqueda de nuevos espacios donde compartir su arte y conectar con el público. Su experiencia en escenarios es amplia, habiendo participado en diferentes eventos y colaboraciones tanto a nivel nacional como internacional desde temprana edad.</p>
+          <p>Formada en el conservatorio, su preparación musical abarca tanto el ámbito clásico como contemporáneo. Actualmente dirige un coro, actividad que complementa su faceta artística y que evidencia su compromiso con la música como medio de expresión colectiva.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÚSICA -->
+  <section id="musica">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:left;">
+        <span class="section-tag">Discografía</span>
+        <h2 class="section-title musica-title">Mi <span>Música</span></h2>
+      </div>
+      <div class="music-grid">
+
+        <!-- 1. Lento y Pegado -->
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="discos fotos tania/lento y pegado.PNG" alt="Lento y Pegado" />
+          </div>
+          <div class="music-card-body">
+            <div class="music-title">Lento y Pegado</div>
+            <div class="music-proximamente">Próximamente 26/06/26</div>
+            <span class="music-listen-btn">Escuchar</span>
+            <div class="music-platform-icons">
+              <a href="#" class="spotify-icon" aria-label="Spotify" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Spotify
+              </a>
+              <a href="#" class="youtube-icon" aria-label="YouTube" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Mi Perfecto Error -->
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="discos fotos tania/mi perfecto error.JPEG" alt="Mi Perfecto Error" />
+          </div>
+          <div class="music-card-body">
+            <div class="music-title">Mi Perfecto Error</div>
+            <span class="music-listen-btn">Escuchar</span>
+            <div class="music-platform-icons">
+              <a href="https://open.spotify.com/intl-es/track/7BMnETkuFtjTspdQfwM1S1?si=a11732eaae304451" class="spotify-icon" aria-label="Spotify" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Spotify
+              </a>
+              <a href="https://youtu.be/IYcY9M1EXbE?si=K7I_D4W8WUbzsOUP" class="youtube-icon" aria-label="YouTube" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Offline -->
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="discos fotos tania/offline.PNG" alt="Offline" />
+          </div>
+          <div class="music-card-body">
+            <div class="music-title">Offline</div>
+            <span class="music-listen-btn">Escuchar</span>
+            <div class="music-platform-icons">
+              <a href="https://open.spotify.com/intl-es/track/2qsL8KSLYBPh6687I4HM43?si=9184803ad6884e58" class="spotify-icon" aria-label="Spotify" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Spotify
+              </a>
+              <a href="https://youtu.be/Z9NXgPlW8Aw?si=YH0CjEUuKVuDSM-0" class="youtube-icon" aria-label="YouTube" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Corazón de Fuego -->
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="discos fotos tania/corazon de fuego.JPG" alt="Corazón de Fuego" />
+          </div>
+          <div class="music-card-body">
+            <div class="music-title">Corazón de Fuego</div>
+            <span class="music-listen-btn">Escuchar</span>
+            <div class="music-platform-icons">
+              <a href="https://open.spotify.com/intl-es/track/6hnFn6CtnMN69iRELJlX5q?si=8b355f900fa44beb" class="spotify-icon" aria-label="Spotify" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Spotify
+              </a>
+              <a href="https://youtu.be/3h9YO3HJpWQ?si=qERnvyCkjSYDGjFN" class="youtube-icon" aria-label="YouTube" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Eterno y Perdido -->
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="discos fotos tania/eterno y perdido.png" alt="Eterno y Perdido" />
+          </div>
+          <div class="music-card-body">
+            <div class="music-title">Eterno y Perdido</div>
+            <span class="music-listen-btn">Escuchar</span>
+            <div class="music-platform-icons">
+              <a href="https://open.spotify.com/intl-es/track/2p3rXlo9h0SQc2m5abYYFY?si=8dbf4b17f8544bdd" class="spotify-icon" aria-label="Spotify" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Spotify
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. 2 Extraños -->
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="discos fotos tania/dos extraños.jpg" alt="2 Extraños" />
+          </div>
+          <div class="music-card-body">
+            <div class="music-title">2 Extraños</div>
+            <span class="music-listen-btn">Escuchar</span>
+            <div class="music-platform-icons">
+              <a href="https://open.spotify.com/intl-es/track/2MrXzLO0sl6lPTWA5rcHXx?si=0a435b1ce39048a4" class="spotify-icon" aria-label="Spotify" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Spotify
+              </a>
+              <a href="https://youtu.be/ZX0F0SH3VlE?si=1Odq48AXtfCX0B5x" class="youtube-icon" aria-label="YouTube" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                YouTube
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. La Leyenda -->
+        <div class="music-card">
+          <div class="music-cover">
+            <img src="discos fotos tania/la leyenda.jpg" alt="La Leyenda" />
+          </div>
+          <div class="music-card-body">
+            <div class="music-title">La Leyenda</div>
+            <span class="music-listen-btn">Escuchar</span>
+            <div class="music-platform-icons">
+              <a href="https://open.spotify.com/intl-es/track/1Uk3iZRQndVxLHE2HLTpMO?si=ceb07bdb178947b5" class="spotify-icon" aria-label="Spotify" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                Spotify
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATAFORMAS DIGITALES -->
+  <section id="plataformas">
+    <video class="plataformas-video" autoplay muted loop playsinline>
+      <source src="plataformas loop 2.mov" type="video/mp4">
+      <source src="plataformas loop 2.mov" type="video/quicktime">
+    </video>
+    <div class="container">
+      <div class="section-header reveal" style="text-align: left;">
+        <h2 class="section-title plataformas-title">Escúchame en todas las <span>Plataformas</span></h2>
+      </div>
+      <div class="platforms-grid">
+
+        <!-- Spotify -->
+        <a href="https://open.spotify.com/intl-es/artist/5gFJM79JY3q2zBFFEDd0Xp?si=oP_sQ0lMQZOhKSwiHZ7eyg" target="_blank" rel="noopener" class="platform-card reveal" style="--platform-color:#1DB954;--platform-bg:rgba(29,185,84,0.12)">
+          <div class="platform-icon" style="background:rgba(29,185,84,0.15)">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="#1DB954"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          </div>
+          <div class="platform-name">Spotify</div>
+          <div class="platform-action">Escuchar →</div>
+        </a>
+
+        <!-- Apple Music -->
+        <a href="https://music.apple.com/es/artist/tania-vega/1755442230" target="_blank" rel="noopener" class="platform-card reveal" style="--platform-color:#fc3c44;--platform-bg:rgba(252,60,68,0.12)">
+          <div class="platform-icon" style="background: linear-gradient(135deg, #fc5c7d, #e01c3c); border-radius: 16px;">
+            <i class="fa-solid fa-music" style="color: white; font-size: 1.8rem;"></i>
+          </div>
+          <div class="platform-name">Apple Music</div>
+          <div class="platform-action">Escuchar →</div>
+        </a>
+
+        <!-- YouTube Music -->
+        <a href="https://music.youtube.com/channel/UCBtNU3alCwXydb00ryosktw?si=6J5_841KkW4M5oOB" target="_blank" rel="noopener" class="platform-card reveal" style="--platform-color:#FF0000;--platform-bg:rgba(255,0,0,0.12)">
+          <div class="platform-icon" style="background:rgba(255,0,0,0.15)">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="#FF0000"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+          </div>
+          <div class="platform-name">YouTube Music</div>
+          <div class="platform-action">Escuchar →</div>
+        </a>
+
+        <!-- Amazon Music -->
+        <a href="https://music.amazon.co.uk/artists/B08Y8LZY6N/tania-vega?marketplaceId=A1F83G8C2ARO7P&musicTerritory=GB&ref=dm_sh_8qHBhcUiMftNpI7O3y4rgyL02" target="_blank" rel="noopener" class="platform-card reveal" style="--platform-color:#00A8CC;--platform-bg:rgba(0,168,204,0.12)">
+          <div class="platform-icon" style="background:rgba(0,168,204,0.15); flex-direction: column; gap: 1px; padding: 6px;">
+            <div class="amazon-music-logo">
+              <span>amazon</span>
+              <span>music</span>
+              <svg viewBox="0 0 60 18" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 3 Q30 18 57 3" stroke="#00A8CC" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+                <path d="M52 1 L57 3 L53 7" stroke="#00A8CC" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="platform-name">Amazon Music</div>
+          <div class="platform-action">Escuchar →</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- REDES SOCIALES -->
+  <section id="redes">
+    <div class="container">
+      <div class="redes-layout">
+        <!-- Foto izquierda -->
+        <div class="redes-photo reveal">
+          <img src="fotos tania/foto redes sociales.png" alt="Tania Vega" />
+        </div>
+        <!-- Contenido derecha -->
+        <div class="redes-content">
+          <div class="section-header reveal" style="text-align:left; margin-bottom:0;">
+            <h2 class="section-title redes-title">Sígueme en mis <span>Redes Sociales</span></h2>
+          </div>
+          <div class="social-grid">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/taniavegamusic?igsh=Y3Fiam5sNzg3Nmtt" target="_blank" rel="noopener" class="social-card instagram reveal">
+              <div class="social-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </div>
+              <div class="social-info">
+                <div class="social-name">Instagram</div>
+                <div class="social-handle">@taniavegamusic</div>
+              </div>
+              <div class="social-arrow">→</div>
+            </a>
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@taniavegamusic" target="_blank" rel="noopener" class="social-card tiktok reveal">
+              <div class="social-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.17 8.17 0 004.77 1.52V6.77a4.85 4.85 0 01-1-.08z"/></svg>
+              </div>
+              <div class="social-info">
+                <div class="social-name">TikTok</div>
+                <div class="social-handle">@taniavegamusic</div>
+              </div>
+              <div class="social-arrow">→</div>
+            </a>
+            <!-- Facebook -->
+            <a href="https://www.facebook.com/p/Tania-Vega-61560839842783/" target="_blank" rel="noopener" class="social-card facebook reveal">
+              <div class="social-icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </div>
+              <div class="social-info">
+                <div class="social-name">Facebook</div>
+                <div class="social-handle">Tania Vega Music</div>
+              </div>
+              <div class="social-arrow">→</div>
+            </a>
+            <!-- Threads -->
+            <a href="https://www.threads.com/@taniavegamusic" target="_blank" rel="noopener" class="social-card threads reveal">
+              <div class="social-icon">
+                <svg viewBox="0 0 192 192" xmlns="http://www.w3.org/2000/svg"><path d="M141.537 88.988a66.667 66.667 0 00-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.036l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.23c8.249.053 14.474 2.452 18.503 7.129 2.932 3.405 4.893 8.111 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.318-11.319 11.258-24.925 16.115-45.488 16.263-22.809-.169-40.06-7.484-51.275-21.742C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.63-43.966 16.133-57.317C56.954 24.425 74.204 17.11 97.013 16.941c22.975.17 40.526 7.52 52.171 21.847 5.71 6.955 10.015 15.64 12.853 25.676l16.147-4.18c-3.44-12.687-8.853-23.606-16.219-32.641C147.036 9.607 125.202.195 97.07 0h-.113C68.882.194 47.292 9.642 32.788 28.08 19.882 44.485 13.224 67.315 13.001 96v.027c.223 28.686 6.881 51.516 19.787 67.918C47.292 182.356 68.882 191.806 96.957 192h.114c24.92-.173 42.554-6.708 57.048-21.166 18.963-18.925 18.392-42.692 12.142-57.27-4.484-10.454-13.033-18.945-24.724-24.576zm-45.47 45.517c-10.444.588-21.287-4.098-21.82-14.135-.398-7.442 5.296-15.746 22.461-16.735 1.966-.113 3.895-.169 5.79-.169 6.235 0 12.068.606 17.37 1.765-1.978 24.702-13.58 28.713-23.8 29.274z"/></svg>
+              </div>
+              <div class="social-info">
+                <div class="social-name">Threads</div>
+                <div class="social-handle">@taniavegamusic</div>
+              </div>
+              <div class="social-arrow">→</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA & PRENSA -->
+  <section id="noticias">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title agenda-title">Agenda & <span>Prensa</span></h2>
+      </div>
+      <div class="agenda-grid">
+
+        <!-- BLOQUE CONCIERTOS -->
+        <div class="agenda-block reveal">
+          <div class="agenda-block-header conciertos">
+            <div class="agenda-block-icon conciertos"></div>
+            <div class="agenda-block-title">Fechas de <span>Conciertos</span></div>
+          </div>
+          <div class="agenda-list">
+            <div class="agenda-item">
+              <div class="agenda-item-date">
+                <div class="agenda-item-day">—</div>
+                <div class="agenda-item-month">Próx.</div>
+              </div>
+              <div class="agenda-item-info">
+                <div class="agenda-item-title">Próximas fechas por confirmar</div>
+                <div class="agenda-item-sub">Mantente atento/a a las redes sociales</div>
+              </div>
+              <span class="agenda-item-badge badge-pronto">Pronto</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOQUE PRENSA / MEDIOS -->
+        <div class="agenda-block reveal">
+          <div class="agenda-block-header prensa">
+            <div class="agenda-block-icon prensa"></div>
+            <div class="agenda-block-title">Apariciones en <span>Medios</span></div>
+          </div>
+          <div class="agenda-list">
+            <div class="agenda-item">
+              <div class="agenda-item-date">
+                <div class="agenda-item-day">—</div>
+                <div class="agenda-item-month">Próx.</div>
+              </div>
+              <div class="agenda-item-info">
+                <div class="agenda-item-title">Próximas apariciones por confirmar</div>
+                <div class="agenda-item-sub">Entrevistas, prensa y medios</div>
+              </div>
+              <span class="agenda-item-badge badge-medio">Pronto</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container">
+      <div class="contact-wrapper">
+
+        <!-- Foto izquierda -->
+        <div class="contact-photo reveal">
+          <img src="fotos tania/foto contacto.png" alt="Tania Vega" />
+        </div>
+
+        <!-- Contenido derecha -->
+        <div class="contact-right">
+          <div class="contact-info reveal">
+            <h2 class="section-title contacto-title" style="-webkit-text-fill-color: white; color: white;">Contacto</h2>
+            <a href="mailto:contacto@taniavegamusic.com" class="contact-email">
+              contacto@taniavegamusic.com
+            </a>
+          </div>
+          <form class="contact-form reveal" action="https://formspree.io/f/xkoadodj" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" placeholder="Tu nombre" required />
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="tu@email.com" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Motivo de contacto</label>
+              <select>
+                <option value="">Selecciona una opción</option>
+                <option>Contratación / Booking</option>
+                <option>Prensa / Medios</option>
+                <option>Colaboración artística</option>
+                <option>Otros</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Mensaje</label>
+              <textarea rows="4" placeholder="" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Mensaje ✦</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">TANIA VEGA</div>
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#musica">Música</a></li>
+      <li><a href="#plataformas">Plataformas</a></li>
+      <li><a href="#redes">Redes</a></li>
+      <li><a href="#noticias">Noticias</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <p class="footer-copy">
+      © 2026 Tania Vega · Todos los derechos reservados ·
+      <a href="mailto:contacto@taniavegamusic.com">contacto@taniavegamusic.com</a>
+    </p>
+    <div class="footer-legal-links">
+      <a href="aviso-legal.html">Aviso Legal</a>
+      <span>·</span>
+      <a href="politica-privacidad.html">Política de Privacidad</a>
+      <span>·</span>
+      <a href="politica-cookies.html">Política de Cookies</a>
+    </div>
+  </footer>
+
+  <!-- BANNER COOKIES -->
+  <div id="cookie-banner" style="display:none;">
+    <div class="cookie-icon">🍪</div>
+    <div class="cookie-text">
+      <strong>Usamos cookies</strong>
+      <p>Utilizamos cookies propias y de terceros (Google Analytics) para analizar el uso del sitio y mejorar tu experiencia. Puedes aceptarlas o rechazarlas. <a href="politica-cookies.html">Más información</a></p>
+    </div>
+    <div class="cookie-actions">
+      <button onclick="rejectCookies()" class="cookie-btn cookie-reject">Rechazar</button>
+      <button onclick="acceptCookies()" class="cookie-btn cookie-accept">Aceptar todo</button>
+    </div>
+  </div>
+
+  <script>
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Bio photo glow — triggers on scroll into view, once
+    const bioImg = document.querySelector('.bio-image img');
+    if (bioImg) {
+      const glowObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            bioImg.classList.add('glow-active');
+            glowObserver.unobserve(bioImg);
+          }
+        });
+      }, { threshold: 0.4 });
+      glowObserver.observe(bioImg);
+    }
+
+    // Footer logo glow
+    const footerLogo = document.querySelector('.footer-logo');
+    if (footerLogo) {
+      const footerObs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('glow-text-active');
+            footerObs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      footerObs.observe(footerLogo);
+    }
+
+    // Contacto photo glow
+    const contactoImg = document.querySelector('.contact-photo img');
+    if (contactoImg) {
+      const contactoGlowObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            contactoImg.classList.add('glow-active');
+            contactoGlowObserver.unobserve(contactoImg);
+          }
+        });
+      }, { threshold: 0.4 });
+      contactoGlowObserver.observe(contactoImg);
+    }
+
+    // Redes photo glow — same effect as bio photo
+    const redesImg = document.querySelector('.redes-photo img');
+    if (redesImg) {
+      const redesGlowObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            redesImg.classList.add('glow-active');
+            redesGlowObserver.unobserve(redesImg);
+          }
+        });
+      }, { threshold: 0.4 });
+      redesGlowObserver.observe(redesImg);
+    }
+
+    // Glow Night text elements — trigger on scroll into view, once each
+    ['.hero-title', '.bio-text h2', '.plataformas-title', '.redes-title', '.musica-title', '.agenda-title', '.contacto-title'].forEach(sel => {
+      const el = document.querySelector(sel);
+      if (!el) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('glow-text-active');
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      obs.observe(el);
+    });
+
+    // Reveal general (excluye music cards que tienen su propio observer)
+    document.querySelectorAll('.reveal:not(.music-card)').forEach((el, i) => {
+      el.style.transitionDelay = (i % 4) * 0.1 + 's';
+      observer.observe(el);
+    });
+
+    // Music cards — CSS animation con animation-delay por índice
+    const musicCards = document.querySelectorAll('.music-grid .music-card');
+    const musicObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = Array.from(musicCards).indexOf(entry.target);
+          entry.target.style.animationDelay = (idx % 3) * 0.15 + 's';
+          entry.target.classList.add('animate-in');
+          musicObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+
+    musicCards.forEach(card => musicObserver.observe(card));
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      nav.style.padding = window.scrollY > 50 ? '0.8rem 3rem' : '1.2rem 3rem';
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      const links = document.querySelector('.nav-links');
+      links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '100%';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'rgba(10,10,15,0.98)';
+      links.style.padding = '1.5rem 2rem';
+      links.style.backdropFilter = 'blur(12px)';
+    }
+
+    // Form submit
+    // Formspree handles form submission natively
+
+    // ── GOOGLE ANALYTICS (condicional por consentimiento) ──
+    const GA_ID = 'G-XXXXXXXXXX'; // ← Sustituir por tu ID de Google Analytics
+
+    function loadGoogleAnalytics() {
+      if (window._gaLoaded) return;
+      window._gaLoaded = true;
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA_ID, { anonymize_ip: true });
+    }
+
+    function acceptCookies() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      document.getElementById('cookie-banner').style.display = 'none';
+      loadGoogleAnalytics();
+    }
+
+    function rejectCookies() {
+      localStorage.setItem('cookie_consent', 'rejected');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+
+    // Comprobar preferencia guardada
+    (function() {
+      const consent = localStorage.getItem('cookie_consent');
+      if (consent === 'accepted') {
+        loadGoogleAnalytics();
+      } else if (!consent) {
+        // Primera visita: mostrar banner con pequeño retraso
+        setTimeout(function() {
+          document.getElementById('cookie-banner').style.display = 'flex';
+        }, 1500);
+      }
+      // Si consent === 'rejected', no mostramos banner ni cargamos GA
+    })();
+  </script>
+</body>
+</html>

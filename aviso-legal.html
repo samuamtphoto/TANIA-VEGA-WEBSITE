@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aviso Legal – Tania María Vega Martínez</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/glow-night" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #e040fb;
+      --accent2: #7c4dff;
+      --dark: #0a0a0f;
+      --dark2: #12121a;
+      --text: #f0f0f0;
+      --text-muted: #aaaaaa;
+      --gradient: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    .legal-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(224,64,251,0.2);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .legal-header-logo {
+      font-family: 'GLOW NIGHT', 'Playfair Display', serif;
+      font-size: 1.3rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .legal-back {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .legal-back:hover { color: var(--accent); }
+
+    /* ── CONTENIDO ── */
+    .legal-container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .legal-title {
+      font-family: 'GLOW NIGHT', 'Playfair Display', serif;
+      font-size: 2.2rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .legal-subtitle {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-bottom: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .legal-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .legal-section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(224,64,251,0.15);
+    }
+
+    .legal-section p,
+    .legal-section li {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .legal-section ul {
+      padding-left: 1.4rem;
+    }
+
+    .legal-section strong {
+      color: var(--text);
+    }
+
+    .legal-section a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .legal-section a:hover { text-decoration: underline; }
+
+    .legal-highlight {
+      background: rgba(124,77,255,0.07);
+      border-left: 3px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+    }
+
+    .legal-highlight p { margin: 0; }
+
+    /* ── FOOTER ── */
+    .legal-footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .legal-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 0.4rem;
+    }
+
+    .placeholder {
+      background: rgba(224,64,251,0.15);
+      color: var(--accent);
+      border-radius: 4px;
+      padding: 0 4px;
+      font-weight: 700;
+      font-size: 0.82em;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="legal-header">
+    <a href="index.html" class="legal-header-logo">TANIA VEGA</a>
+    <a href="index.html" class="legal-back">← Volver a la web</a>
+  </header>
+
+  <main class="legal-container">
+
+    <h1 class="legal-title">Aviso Legal</h1>
+    <p class="legal-subtitle">Última actualización: junio de 2026</p>
+
+    <div class="legal-section">
+      <h2>1. Datos identificativos del titular</h2>
+      <p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se facilitan los datos identificativos del titular de este sitio web:</p>
+      <div class="legal-highlight">
+        <p><strong>Titular:</strong> Tania María Vega Martínez</p>
+        <p><strong>NIF:</strong> 53760544E</p>
+        <p><strong>Dirección:</strong> Madrid, España</p>
+        <p><strong>Correo electrónico:</strong> <a href="mailto:contacto@taniavegamusic.com">contacto@taniavegamusic.com</a></p>
+        <p><strong>Sitio web:</strong> <a href="https://taniavegamusic.com">taniavegamusic.com</a></p>
+      </div>
+      <p>En adelante, "el Titular".</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. Objeto y ámbito de aplicación</h2>
+      <p>El presente Aviso Legal regula el uso del sitio web de Tania María Vega Martínez (en adelante, "el Sitio Web"), cuyo objeto es ofrecer información sobre la artista musical Tania María Vega Martínez: su trayectoria, discografía, agenda de conciertos, apariciones en medios y formulario de contacto para consultas profesionales.</p>
+      <p>El acceso y uso del Sitio Web implica la aceptación plena y sin reservas de este Aviso Legal. Si no estás de acuerdo con alguno de los términos aquí recogidos, te rogamos que no utilices el Sitio Web.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. Propiedad intelectual e industrial</h2>
+      <p>Todos los contenidos del Sitio Web —incluyendo, sin carácter limitativo, textos, fotografías, gráficos, imágenes, logotipos, vídeos, material audiovisual, código fuente, diseño y estructura— son titularidad exclusiva del Titular o cuentan con la debida autorización de sus titulares, y están protegidos por las leyes españolas e internacionales de propiedad intelectual e industrial.</p>
+      <p>Queda expresamente prohibido:</p>
+      <ul>
+        <li>Reproducir, distribuir, transformar o comunicar públicamente cualquier contenido del Sitio Web sin la autorización previa y por escrito del Titular.</li>
+        <li>Usar el nombre artístico, imagen o cualquier marca asociada a "Tania María Vega Martínez" con fines comerciales sin autorización expresa.</li>
+        <li>Realizar actos de reproducción o explotación de la música, letras o grabaciones audiovisuales disponibles en el Sitio Web más allá de lo permitido por la ley.</li>
+      </ul>
+      <p>El uso personal y no comercial de los contenidos está permitido, siempre que se respeten los derechos de autor y se cite la fuente.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. Responsabilidad</h2>
+      <p>El Titular no garantiza la disponibilidad continua del Sitio Web ni la ausencia de errores en sus contenidos. Se reserva el derecho de modificar, actualizar o eliminar cualquier contenido sin previo aviso.</p>
+      <p>El Titular no será responsable de los daños y perjuicios derivados del uso del Sitio Web, de la imposibilidad de acceder al mismo, ni del uso indebido que terceros puedan realizar de la información contenida en él.</p>
+      <p>El Sitio Web puede contener enlaces a páginas de terceros. El Titular no controla ni es responsable del contenido de dichas páginas externas, cuyo acceso se realiza bajo la exclusiva responsabilidad del usuario.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. Política de enlaces</h2>
+      <p>Si deseas establecer un enlace a este Sitio Web desde tu página, deberás obtener autorización previa por escrito del Titular. En ningún caso se podrá:</p>
+      <ul>
+        <li>Reproducir total o parcialmente cualquier contenido del Sitio Web.</li>
+        <li>Utilizar marcos (<em>frames</em>) que oculten el origen del contenido.</li>
+        <li>Realizar afirmaciones falsas o engañosas sobre el Titular o sus contenidos.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. Legislación aplicable y jurisdicción</h2>
+      <p>El presente Aviso Legal se rige por la legislación española vigente. Para la resolución de cualquier controversia derivada del uso del Sitio Web, las partes se someten a la jurisdicción de los Juzgados y Tribunales del domicilio del usuario, conforme a lo establecido en la normativa de protección de consumidores, o a los Juzgados del domicilio del Titular si el usuario actúa en calidad de empresa.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>7. Modificaciones del aviso legal</h2>
+      <p>El Titular se reserva el derecho a modificar el presente Aviso Legal en cualquier momento. Los cambios entrarán en vigor desde su publicación en el Sitio Web. Se recomienda revisar periódicamente este documento.</p>
+    </div>
+
+  </main>
+
+  <footer class="legal-footer">
+    © 2026 Tania María Vega Martínez · Todos los derechos reservados ·
+    <a href="aviso-legal.html">Aviso Legal</a> ·
+    <a href="politica-privacidad.html">Política de Privacidad</a> ·
+    <a href="politica-cookies.html">Política de Cookies</a>
+  </footer>
+
+</body>
+</html>

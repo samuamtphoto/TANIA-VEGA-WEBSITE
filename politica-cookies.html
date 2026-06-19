@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Cookies – Tania Vega</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.cdnfonts.com/css/glow-night" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #e040fb;
+      --accent2: #7c4dff;
+      --dark: #0a0a0f;
+      --dark2: #12121a;
+      --text: #f0f0f0;
+      --text-muted: #aaaaaa;
+      --gradient: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .legal-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(224,64,251,0.2);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .legal-header-logo {
+      font-family: 'GLOW NIGHT', 'Playfair Display', serif;
+      font-size: 1.3rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+    }
+
+    .legal-back {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .legal-back:hover { color: var(--accent); }
+
+    .legal-container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .legal-title {
+      font-family: 'GLOW NIGHT', 'Playfair Display', serif;
+      font-size: 2.2rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+
+    .legal-subtitle {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-bottom: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .legal-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .legal-section h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(224,64,251,0.15);
+    }
+
+    .legal-section p,
+    .legal-section li {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 0.7rem;
+    }
+
+    .legal-section ul { padding-left: 1.4rem; }
+    .legal-section strong { color: var(--text); }
+
+    .legal-section a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .legal-section a:hover { text-decoration: underline; }
+
+    /* Tabla de cookies */
+    .cookie-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      font-size: 0.82rem;
+    }
+
+    .cookie-table th {
+      background: rgba(124,77,255,0.15);
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      padding: 0.7rem 0.9rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(224,64,251,0.2);
+    }
+
+    .cookie-table td {
+      padding: 0.65rem 0.9rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      color: var(--text-muted);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .cookie-table tr:last-child td { border-bottom: none; }
+
+    .cookie-table tr:hover td {
+      background: rgba(124,77,255,0.04);
+    }
+
+    /* Botón gestionar consentimiento */
+    .consent-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.8rem;
+      padding: 0.6rem 1.4rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .consent-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .consent-status {
+      display: inline-block;
+      margin-top: 0.8rem;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .status-accepted {
+      background: rgba(0,230,118,0.12);
+      color: #00e676;
+      border: 1px solid rgba(0,230,118,0.2);
+    }
+
+    .status-rejected {
+      background: rgba(255,82,82,0.1);
+      color: #ff5252;
+      border: 1px solid rgba(255,82,82,0.2);
+    }
+
+    .status-pending {
+      background: rgba(255,193,7,0.1);
+      color: #ffc107;
+      border: 1px solid rgba(255,193,7,0.2);
+    }
+
+    .legal-footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    .legal-footer a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 0 0.4rem;
+    }
+
+    @media (max-width: 600px) {
+      .cookie-table { font-size: 0.75rem; }
+      .cookie-table th, .cookie-table td { padding: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="legal-header">
+    <a href="index.html" class="legal-header-logo">TANIA VEGA</a>
+    <a href="index.html" class="legal-back">← Volver a la web</a>
+  </header>
+
+  <main class="legal-container">
+
+    <h1 class="legal-title">Política de Cookies</h1>
+    <p class="legal-subtitle">Última actualización: junio de 2026</p>
+
+    <div class="legal-section">
+      <h2>1. ¿Qué son las cookies?</h2>
+      <p>Las cookies son pequeños archivos de texto que los sitios web almacenan en tu dispositivo (ordenador, tableta, móvil) cuando los visitas. Permiten que el sitio web recuerde tus acciones y preferencias durante un periodo de tiempo, para que no tengas que volver a introducirlas cada vez que regreses.</p>
+      <p>Existen también otras tecnologías similares como <em>pixels</em>, <em>web beacons</em> o almacenamiento local (<code>localStorage</code>), que pueden utilizarse con fines equivalentes. A efectos de esta política, cuando hablamos de "cookies" nos referimos también a estas tecnologías.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. Tipos de cookies según quien las gestiona</h2>
+      <ul>
+        <li><strong>Cookies propias:</strong> gestionadas por el Titular de este Sitio Web. Se utilizan para guardar tu preferencia de consentimiento de cookies (<code>cookie_consent</code>).</li>
+        <li><strong>Cookies de terceros:</strong> gestionadas por empresas externas. En este Sitio Web, solo se utilizan si has dado tu consentimiento: Google Analytics (Google LLC).</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. Tipos de cookies según su finalidad</h2>
+      <ul>
+        <li><strong>Cookies técnicas o necesarias:</strong> imprescindibles para el funcionamiento del sitio. No requieren consentimiento. En este Sitio Web solo se usa una cookie técnica propia para recordar tu elección sobre el uso de cookies.</li>
+        <li><strong>Cookies analíticas:</strong> permiten analizar el comportamiento de los usuarios para mejorar el funcionamiento del sitio. Requieren tu consentimiento previo. En este Sitio Web se utiliza Google Analytics.</li>
+      </ul>
+      <p>No se utilizan cookies publicitarias, de marketing ni de perfilado.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. Detalle de las cookies utilizadas</h2>
+      <table class="cookie-table">
+        <thead>
+          <tr>
+            <th>Cookie</th>
+            <th>Proveedor</th>
+            <th>Tipo</th>
+            <th>Finalidad</th>
+            <th>Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>cookie_consent</code></td>
+            <td>taniavegamusic.com (propia)</td>
+            <td>Técnica</td>
+            <td>Recuerda la preferencia del usuario sobre el uso de cookies analíticas.</td>
+            <td>Persistente (localStorage)</td>
+          </tr>
+          <tr>
+            <td><code>_ga</code></td>
+            <td>Google Analytics (Google LLC)</td>
+            <td>Analítica</td>
+            <td>Distingue usuarios únicos asignando un identificador aleatorio.</td>
+            <td>2 años</td>
+          </tr>
+          <tr>
+            <td><code>_ga_XXXXXXXX</code></td>
+            <td>Google Analytics (Google LLC)</td>
+            <td>Analítica</td>
+            <td>Mantiene el estado de la sesión de Google Analytics 4.</td>
+            <td>2 años</td>
+          </tr>
+          <tr>
+            <td><code>_gid</code></td>
+            <td>Google Analytics (Google LLC)</td>
+            <td>Analítica</td>
+            <td>Distingue usuarios. Se actualiza en cada sesión.</td>
+            <td>24 horas</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Las cookies de Google Analytics solo se instalan si has dado tu consentimiento. Los datos se recopilan de forma anonimizada (<em>IP anonymization</em> activado). Puedes consultar la política de privacidad de Google en <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. Cómo gestionar tu consentimiento</h2>
+      <p>Puedes cambiar tu preferencia sobre el uso de cookies analíticas en cualquier momento:</p>
+
+      <div id="consent-display">
+        <!-- Dinámico según localStorage -->
+      </div>
+
+      <div style="display:flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 0.8rem;">
+        <button class="consent-btn" onclick="setConsent('accepted')">✓ Aceptar cookies analíticas</button>
+        <button class="consent-btn" style="background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-muted);" onclick="setConsent('rejected')">✕ Rechazar cookies analíticas</button>
+      </div>
+
+      <p style="margin-top: 1.2rem;">También puedes gestionar o eliminar las cookies directamente desde tu navegador:</p>
+      <ul>
+        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a></li>
+        <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener">Mozilla Firefox</a></li>
+        <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a></li>
+        <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener">Microsoft Edge</a></li>
+      </ul>
+      <p>Ten en cuenta que deshabilitar ciertas cookies puede afectar a la funcionalidad del sitio.</p>
+      <p>Puedes impedir que Google Analytics recopile tu información instalando el complemento de inhabilitación disponible en: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. Modificaciones de la política de cookies</h2>
+      <p>Esta Política de Cookies puede actualizarse en cualquier momento, especialmente si cambian los servicios que utilizamos o la normativa aplicable. La versión vigente estará siempre disponible en esta página. Si los cambios afectan a cookies que requieren consentimiento, se volverá a solicitar éste.</p>
+    </div>
+
+  </main>
+
+  <footer class="legal-footer">
+    © 2026 Tania Vega · Todos los derechos reservados ·
+    <a href="aviso-legal.html">Aviso Legal</a> ·
+    <a href="politica-privacidad.html">Política de Privacidad</a> ·
+    <a href="politica-cookies.html">Política de Cookies</a>
+  </footer>
+
+  <script>
+    function setConsent(value) {
+      localStorage.setItem('cookie_consent', value);
+      updateConsentDisplay();
+      if (value === 'rejected') {
+        // Eliminar cookies de GA si existen
+        document.cookie.split(';').forEach(function(c) {
+          var name = c.trim().split('=')[0];
+          if (name.startsWith('_ga') || name === '_gid') {
+            document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
+          }
+        });
+      }
+    }
+
+    function updateConsentDisplay() {
+      var consent = localStorage.getItem('cookie_consent');
+      var el = document.getElementById('consent-display');
+      if (consent === 'accepted') {
+        el.innerHTML = '<span class="consent-status status-accepted">✓ Has aceptado las cookies analíticas</span>';
+      } else if (consent === 'rejected') {
+        el.innerHTML = '<span class="consent-status status-rejected">✕ Has rechazado las cookies analíticas</span>';
+      } else {
+        el.innerHTML = '<span class="consent-status status-pending">⚠ No has indicado tu preferencia todavía</span>';
+      }
+    }
+
+    updateConsentDisplay();
+  </script>
+
+</body>
+</html>
