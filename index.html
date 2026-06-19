@@ -1515,6 +1515,35 @@
         from { opacity: 0; transform: translateY(-8px); }
         to   { opacity: 1; transform: translateY(0); }
       }
+
+      /* ── AGENDA & PRENSA: una columna en móvil ── */
+      .agenda-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      /* ── REDES SOCIALES: foto arriba, iconos abajo ── */
+      .redes-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .redes-photo {
+        order: -1;
+        max-width: 320px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      .redes-content {
+        width: 100%;
+      }
+      .social-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      /* ── PLATAFORMAS: video centrado en móvil ── */
+      .plataformas-video {
+        object-position: center center;
+      }
     }
   </style>
 </head>
