@@ -666,6 +666,8 @@
       overflow: hidden;
     }
 
+    .plataformas-video-mobile { display: none; }
+
     .plataformas-video {
       position: absolute;
       inset: 0;
@@ -1540,8 +1542,10 @@
         grid-template-columns: 1fr 1fr;
       }
 
-      /* ── PLATAFORMAS: video centrado en móvil ── */
-      .plataformas-video {
+      /* ── PLATAFORMAS: video móvil ── */
+      .plataformas-video-desktop { display: none; }
+      .plataformas-video-mobile {
+        display: block;
         object-position: center center;
       }
     }
@@ -1796,9 +1800,13 @@
 
   <!-- PLATAFORMAS DIGITALES -->
   <section id="plataformas">
-    <video class="plataformas-video" autoplay muted loop playsinline>
+    <video class="plataformas-video plataformas-video-desktop" autoplay muted loop playsinline>
       <source src="plataformas loop 2.mov" type="video/mp4">
       <source src="plataformas loop 2.mov" type="video/quicktime">
+    </video>
+    <video class="plataformas-video plataformas-video-mobile" autoplay muted loop playsinline>
+      <source src="para movil 2_00002748.mov" type="video/mp4">
+      <source src="para movil 2_00002748.mov" type="video/quicktime">
     </video>
     <div class="container">
       <div class="section-header reveal" style="text-align: left;">
