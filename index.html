@@ -1411,6 +1411,106 @@
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--dark); }
     ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 3px; }
+
+    /* ──────────────── MÓVIL: MI MÚSICA ──────────────── */
+    .mobile-music-toggle { display: none; }
+    .mobile-music-drawer { display: contents; }
+
+    @media (max-width: 768px) {
+      /* Lento y Pegado: carta destacada full width */
+      #card-lento {
+        grid-column: 1 / -1;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        border: 1px solid rgba(224,64,251,0.35);
+        box-shadow: 0 0 20px rgba(224,64,251,0.15);
+      }
+      #card-lento .music-cover {
+        width: 110px;
+        min-width: 110px;
+        height: 110px;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      #card-lento .music-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      #card-lento .music-card-body {
+        flex: 1;
+        padding: 0;
+      }
+
+      /* Botón toggle */
+      .mobile-music-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        grid-column: 1 / -1;
+        width: 100%;
+        background: rgba(124,77,255,0.08);
+        border: 1px solid rgba(124,77,255,0.25);
+        border-radius: 14px;
+        padding: 0.9rem 1.2rem;
+        cursor: pointer;
+        color: var(--text);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: background 0.3s, border-color 0.3s;
+        margin-top: 0.5rem;
+      }
+      .mobile-music-toggle:hover,
+      .mobile-music-toggle.open {
+        background: rgba(124,77,255,0.15);
+        border-color: rgba(224,64,251,0.4);
+      }
+      .mobile-music-toggle-text {
+        background: linear-gradient(135deg, #e040fb, #7c4dff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+      }
+      .mobile-music-toggle-count {
+        color: var(--text-muted);
+        font-size: 0.78rem;
+        font-weight: 400;
+        flex: 1;
+      }
+      .mobile-music-toggle-arrow {
+        color: var(--accent);
+        font-size: 0.8rem;
+        transition: transform 0.3s ease;
+        display: inline-block;
+      }
+      .mobile-music-toggle.open .mobile-music-toggle-arrow {
+        transform: rotate(180deg);
+      }
+
+      /* Drawer: oculto por defecto en móvil */
+      .mobile-music-drawer {
+        display: none;
+        grid-column: 1 / -1;
+        contents: unset;
+      }
+      .mobile-music-drawer.open {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        width: 100%;
+        animation: drawer-fade 0.3s ease;
+      }
+      @keyframes drawer-fade {
+        from { opacity: 0; transform: translateY(-8px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    }
   </style>
 </head>
 <body>
@@ -1500,7 +1600,7 @@
       <div class="music-grid">
 
         <!-- 1. Lento y Pegado -->
-        <div class="music-card">
+        <div class="music-card" id="card-lento">
           <div class="music-cover">
             <img src="DISCOS FOTOS TANIA/lento y pegado.PNG" alt="Lento y Pegado" />
           </div>
@@ -1520,6 +1620,16 @@
             </div>
           </div>
         </div>
+
+        <!-- BOTÓN MI MÚSICA (solo móvil) -->
+        <button class="mobile-music-toggle" id="mobile-music-toggle" onclick="toggleMiMusica()" aria-expanded="false">
+          <span class="mobile-music-toggle-text">Mi Música</span>
+          <span class="mobile-music-toggle-count">6 canciones</span>
+          <span class="mobile-music-toggle-arrow">▼</span>
+        </button>
+
+        <!-- CARPETA MI MÚSICA (resto de canciones) -->
+        <div class="mobile-music-drawer" id="mobile-music-drawer">
 
         <!-- 2. Mi Perfecto Error -->
         <div class="music-card">
@@ -1638,6 +1748,8 @@
             </div>
           </div>
         </div>
+
+        </div><!-- /mobile-music-drawer -->
 
       </div>
     </div>
@@ -2041,6 +2153,16 @@
 
     // Form submit
     // Formspree handles form submission natively
+
+    // ── MI MÚSICA: acordeón móvil ──
+    function toggleMiMusica() {
+      const btn = document.getElementById('mobile-music-toggle');
+      const drawer = document.getElementById('mobile-music-drawer');
+      const isOpen = drawer.classList.contains('open');
+      drawer.classList.toggle('open');
+      btn.classList.toggle('open');
+      btn.setAttribute('aria-expanded', !isOpen);
+    }
 
     // ── FORMULARIO AJAX (sin redirigir a Formspree) ──
     const contactForm = document.getElementById('contact-form');
