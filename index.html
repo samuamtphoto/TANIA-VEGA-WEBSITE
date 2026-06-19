@@ -1560,7 +1560,7 @@
         <!-- 6. 2 Extraños -->
         <div class="music-card">
           <div class="music-cover">
-            <img src="DISCOS FOTOS TANIA/dos extraños.jpg" alt="2 Extraños" />
+            <img src="DISCOS FOTOS TANIA/dos-extranos.jpg" alt="2 Extraños" />
           </div>
           <div class="music-card-body">
             <div class="music-title">2 Extraños</div>
@@ -1795,19 +1795,20 @@
             </a>
           </div>
           <form class="contact-form reveal" action="https://formspree.io/f/xkoadodj" method="POST">
+            <input type="hidden" name="_language" value="es" />
             <div class="form-row">
               <div class="form-group">
                 <label>Nombre</label>
-                <input type="text" placeholder="Tu nombre" required />
+                <input type="text" name="nombre" placeholder="Tu nombre" required />
               </div>
               <div class="form-group">
                 <label>Email</label>
-                <input type="email" placeholder="tu@email.com" required />
+                <input type="email" name="email" placeholder="tu@email.com" required />
               </div>
             </div>
             <div class="form-group">
               <label>Motivo de contacto</label>
-              <select>
+              <select name="motivo">
                 <option value="">Selecciona una opción</option>
                 <option>Contratación / Booking</option>
                 <option>Prensa / Medios</option>
@@ -1817,7 +1818,7 @@
             </div>
             <div class="form-group">
               <label>Mensaje</label>
-              <textarea rows="4" placeholder="" required></textarea>
+              <textarea name="mensaje" rows="4" placeholder="" required></textarea>
             </div>
             <button type="submit" class="btn-submit">Enviar Mensaje ✦</button>
           </form>
