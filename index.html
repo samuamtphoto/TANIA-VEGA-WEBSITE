@@ -1417,32 +1417,9 @@
     .mobile-music-drawer { display: contents; }
 
     @media (max-width: 768px) {
-      /* Lento y Pegado: carta destacada full width */
+      /* Lento y Pegado: carta normal, ancho completo */
       #card-lento {
         grid-column: 1 / -1;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem;
-        border: 1px solid rgba(224,64,251,0.35);
-        box-shadow: 0 0 20px rgba(224,64,251,0.15);
-      }
-      #card-lento .music-cover {
-        width: 110px;
-        min-width: 110px;
-        height: 110px;
-        border-radius: 12px;
-        overflow: hidden;
-      }
-      #card-lento .music-cover img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      #card-lento .music-card-body {
-        flex: 1;
-        padding: 0;
       }
 
       /* Botón toggle */
@@ -1501,7 +1478,7 @@
       }
       .mobile-music-drawer.open {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 1rem;
         width: 100%;
         animation: drawer-fade 0.3s ease;
