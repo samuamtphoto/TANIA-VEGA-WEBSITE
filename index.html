@@ -1412,6 +1412,34 @@
     ::-webkit-scrollbar-track { background: var(--dark); }
     ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 3px; }
 
+    /* ──────────────── LANG SWITCHER ──────────────── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      margin-right: 0.4rem;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      padding: 0.2rem 0.3rem;
+      transition: color 0.2s;
+    }
+    .lang-btn.active {
+      color: var(--accent);
+    }
+    .lang-btn:hover { color: var(--text); }
+    .lang-divider {
+      color: rgba(255,255,255,0.2);
+      font-size: 0.7rem;
+    }
+
     /* ──────────────── MÓVIL: MI MÚSICA ──────────────── */
     .mobile-music-toggle { display: none; }
     .mobile-music-drawer { display: contents; }
@@ -1498,13 +1526,13 @@
       <img src="logo tania vega.PNG" alt="Tania Vega" />
     </div>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#biografia">Biografía</a></li>
-      <li><a href="#musica">Música</a></li>
-      <li><a href="#plataformas">Plataformas</a></li>
-      <li><a href="#redes">Redes</a></li>
-      <li><a href="#noticias">Noticias</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="#home" data-i18n="nav-home">Home</a></li>
+      <li><a href="#biografia" data-i18n="nav-bio">Biografía</a></li>
+      <li><a href="#musica" data-i18n="nav-music">Música</a></li>
+      <li><a href="#plataformas" data-i18n="nav-platforms">Plataformas</a></li>
+      <li><a href="#redes" data-i18n="nav-social">Redes</a></li>
+      <li><a href="#noticias" data-i18n="nav-news">Noticias</a></li>
+      <li><a href="#contacto" data-i18n="nav-contact">Contacto</a></li>
     </ul>
     <div class="nav-social">
       <!-- Instagram -->
@@ -1519,6 +1547,11 @@
       <a href="https://open.spotify.com/intl-es/artist/5gFJM79JY3q2zBFFEDd0Xp?si=oP_sQ0lMQZOhKSwiHZ7eyg" target="_blank" rel="noopener" aria-label="Spotify">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
       </a>
+      <div class="lang-switcher">
+        <button id="btn-es" class="lang-btn active" onclick="setLang('es')">ES</button>
+        <span class="lang-divider">|</span>
+        <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
+      </div>
       <div class="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
@@ -1539,9 +1572,9 @@
       <p class="hero-role">Cantante y Compositora</p>
       <div class="hero-actions">
         <a href="#musica" class="btn-primary">
-          <span>▶</span> Escuchar Música
+          <span>▶</span> <span data-i18n="hero-listen">Escuchar Música</span>
         </a>
-        <a href="#contacto" class="btn-secondary">
+        <a href="#contacto" class="btn-secondary" data-i18n="hero-contact">
           Contactar
         </a>
       </div>
@@ -1556,12 +1589,12 @@
           <img src="FOTOS TANIA/FOTO BIOGRAFIA.JPEG" alt="Tania Vega" />
         </div>
         <div class="bio-text reveal">
-          <span class="section-tag">✦ Biografía</span>
+          <span class="section-tag" data-i18n="bio-tag">✦ Biografía</span>
           <h2>Tania <span>Vega</span></h2>
-          <p>Nacida en Valencia, Tania Vega es cantante, compositora y productora musical. Actualmente se encuentra desarrollando su carrera artística de forma independiente, consolidando una propuesta auténtica y personal dentro del panorama musical contemporáneo.</p>
-          <p>Desde su debut como solista en 2024, ha lanzado siete singles originales, los cuales reflejan su sensibilidad artística y versatilidad creativa. Actualmente continúa trabajando en nuevas composiciones que formarán parte de sus próximos lanzamientos.</p>
-          <p>Ha llevado su música en directo a diversas salas de Madrid y Valencia, y se encuentra en constante búsqueda de nuevos espacios donde compartir su arte y conectar con el público. Su experiencia en escenarios es amplia, habiendo participado en diferentes eventos y colaboraciones tanto a nivel nacional como internacional desde temprana edad.</p>
-          <p>Formada en el conservatorio, su preparación musical abarca tanto el ámbito clásico como contemporáneo. Actualmente dirige un coro, actividad que complementa su faceta artística y que evidencia su compromiso con la música como medio de expresión colectiva.</p>
+          <p data-i18n="bio-p1">Nacida en Valencia, Tania Vega es cantante, compositora y productora musical. Actualmente se encuentra desarrollando su carrera artística de forma independiente, consolidando una propuesta auténtica y personal dentro del panorama musical contemporáneo.</p>
+          <p data-i18n="bio-p2">Desde su debut como solista en 2024, ha lanzado siete singles originales, los cuales reflejan su sensibilidad artística y versatilidad creativa. Actualmente continúa trabajando en nuevas composiciones que formarán parte de sus próximos lanzamientos.</p>
+          <p data-i18n="bio-p3">Ha llevado su música en directo a diversas salas de Madrid y Valencia, y se encuentra en constante búsqueda de nuevos espacios donde compartir su arte y conectar con el público. Su experiencia en escenarios es amplia, habiendo participado en diferentes eventos y colaboraciones tanto a nivel nacional como internacional desde temprana edad.</p>
+          <p data-i18n="bio-p4">Formada en el conservatorio, su preparación musical abarca tanto el ámbito clásico como contemporáneo. Actualmente dirige un coro, actividad que complementa su faceta artística y que evidencia su compromiso con la música como medio de expresión colectiva.</p>
         </div>
       </div>
     </div>
@@ -1571,8 +1604,8 @@
   <section id="musica">
     <div class="container">
       <div class="section-header reveal" style="text-align:left;">
-        <span class="section-tag">Discografía</span>
-        <h2 class="section-title musica-title">Mi <span>Música</span></h2>
+        <span class="section-tag" data-i18n="music-tag">Discografía</span>
+        <h2 class="section-title musica-title" data-i18n="music-title">Mi <span>Música</span></h2>
       </div>
       <div class="music-grid">
 
@@ -1583,8 +1616,8 @@
           </div>
           <div class="music-card-body">
             <div class="music-title">Lento y Pegado</div>
-            <div class="music-proximamente">Próximamente 26/06/26</div>
-            <span class="music-listen-btn">Escuchar</span>
+            <div class="music-proximamente" data-i18n="music-soon">Próximamente 26/06/26</div>
+            <span class="music-listen-btn" data-i18n="music-listen">Escuchar</span>
             <div class="music-platform-icons">
               <a href="#" class="spotify-icon" aria-label="Spotify" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -1600,8 +1633,8 @@
 
         <!-- BOTÓN MI MÚSICA (solo móvil) -->
         <button class="mobile-music-toggle" id="mobile-music-toggle" onclick="toggleMiMusica()" aria-expanded="false">
-          <span class="mobile-music-toggle-text">Mi Música</span>
-          <span class="mobile-music-toggle-count">6 canciones</span>
+          <span class="mobile-music-toggle-text" data-i18n="mobile-folder">Mi Música</span>
+          <span class="mobile-music-toggle-count" data-i18n="mobile-songs">6 canciones</span>
           <span class="mobile-music-toggle-arrow">▼</span>
         </button>
 
@@ -1615,7 +1648,7 @@
           </div>
           <div class="music-card-body">
             <div class="music-title">Mi Perfecto Error</div>
-            <span class="music-listen-btn">Escuchar</span>
+            <span class="music-listen-btn" data-i18n="music-listen">Escuchar</span>
             <div class="music-platform-icons">
               <a href="https://open.spotify.com/intl-es/track/7BMnETkuFtjTspdQfwM1S1?si=a11732eaae304451" class="spotify-icon" aria-label="Spotify" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -1636,7 +1669,7 @@
           </div>
           <div class="music-card-body">
             <div class="music-title">Offline</div>
-            <span class="music-listen-btn">Escuchar</span>
+            <span class="music-listen-btn" data-i18n="music-listen">Escuchar</span>
             <div class="music-platform-icons">
               <a href="https://open.spotify.com/intl-es/track/2qsL8KSLYBPh6687I4HM43?si=9184803ad6884e58" class="spotify-icon" aria-label="Spotify" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -1657,7 +1690,7 @@
           </div>
           <div class="music-card-body">
             <div class="music-title">Corazón de Fuego</div>
-            <span class="music-listen-btn">Escuchar</span>
+            <span class="music-listen-btn" data-i18n="music-listen">Escuchar</span>
             <div class="music-platform-icons">
               <a href="https://open.spotify.com/intl-es/track/6hnFn6CtnMN69iRELJlX5q?si=8b355f900fa44beb" class="spotify-icon" aria-label="Spotify" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -1678,7 +1711,7 @@
           </div>
           <div class="music-card-body">
             <div class="music-title">Eterno y Perdido</div>
-            <span class="music-listen-btn">Escuchar</span>
+            <span class="music-listen-btn" data-i18n="music-listen">Escuchar</span>
             <div class="music-platform-icons">
               <a href="https://open.spotify.com/intl-es/track/2p3rXlo9h0SQc2m5abYYFY?si=8dbf4b17f8544bdd" class="spotify-icon" aria-label="Spotify" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -1695,7 +1728,7 @@
           </div>
           <div class="music-card-body">
             <div class="music-title">2 Extraños</div>
-            <span class="music-listen-btn">Escuchar</span>
+            <span class="music-listen-btn" data-i18n="music-listen">Escuchar</span>
             <div class="music-platform-icons">
               <a href="https://open.spotify.com/intl-es/track/2MrXzLO0sl6lPTWA5rcHXx?si=0a435b1ce39048a4" class="spotify-icon" aria-label="Spotify" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -1716,7 +1749,7 @@
           </div>
           <div class="music-card-body">
             <div class="music-title">La Leyenda</div>
-            <span class="music-listen-btn">Escuchar</span>
+            <span class="music-listen-btn" data-i18n="music-listen">Escuchar</span>
             <div class="music-platform-icons">
               <a href="https://open.spotify.com/intl-es/track/1Uk3iZRQndVxLHE2HLTpMO?si=ceb07bdb178947b5" class="spotify-icon" aria-label="Spotify" target="_blank">
                 <svg viewBox="0 0 24 24"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
@@ -1740,7 +1773,7 @@
     </video>
     <div class="container">
       <div class="section-header reveal" style="text-align: left;">
-        <h2 class="section-title plataformas-title">Escúchame en todas las <span>Plataformas</span></h2>
+        <h2 class="section-title plataformas-title" data-i18n="platforms-title">Escúchame en todas las <span>Plataformas</span></h2>
       </div>
       <div class="platforms-grid">
 
@@ -1802,7 +1835,7 @@
         <!-- Contenido derecha -->
         <div class="redes-content">
           <div class="section-header reveal" style="text-align:left; margin-bottom:0;">
-            <h2 class="section-title redes-title">Sígueme en mis <span>Redes Sociales</span></h2>
+            <h2 class="section-title redes-title" data-i18n="social-title">Sígueme en mis <span>Redes Sociales</span></h2>
           </div>
           <div class="social-grid">
             <!-- Instagram -->
@@ -1859,7 +1892,7 @@
   <section id="noticias">
     <div class="container">
       <div class="section-header reveal">
-        <h2 class="section-title agenda-title">Agenda & <span>Prensa</span></h2>
+        <h2 class="section-title agenda-title" data-i18n="news-title">Agenda & <span>Prensa</span></h2>
       </div>
       <div class="agenda-grid">
 
@@ -1867,7 +1900,7 @@
         <div class="agenda-block reveal">
           <div class="agenda-block-header conciertos">
             <div class="agenda-block-icon conciertos"></div>
-            <div class="agenda-block-title">Fechas de <span>Conciertos</span></div>
+            <div class="agenda-block-title" data-i18n="concerts-title">Fechas de <span>Conciertos</span></div>
           </div>
           <div class="agenda-list">
             <div class="agenda-item">
@@ -1876,8 +1909,8 @@
                 <div class="agenda-item-month">Próx.</div>
               </div>
               <div class="agenda-item-info">
-                <div class="agenda-item-title">Próximas fechas por confirmar</div>
-                <div class="agenda-item-sub">Mantente atento/a a las redes sociales</div>
+                <div class="agenda-item-title" data-i18n="concerts-tbc">Próximas fechas por confirmar</div>
+                <div class="agenda-item-sub" data-i18n="concerts-sub">Mantente atento/a a las redes sociales</div>
               </div>
               <span class="agenda-item-badge badge-pronto">Pronto</span>
             </div>
@@ -1888,7 +1921,7 @@
         <div class="agenda-block reveal">
           <div class="agenda-block-header prensa">
             <div class="agenda-block-icon prensa"></div>
-            <div class="agenda-block-title">Apariciones en <span>Medios</span></div>
+            <div class="agenda-block-title" data-i18n="press-title">Apariciones en <span>Medios</span></div>
           </div>
           <div class="agenda-list">
             <div class="agenda-item">
@@ -1897,8 +1930,8 @@
                 <div class="agenda-item-month">Próx.</div>
               </div>
               <div class="agenda-item-info">
-                <div class="agenda-item-title">Próximas apariciones por confirmar</div>
-                <div class="agenda-item-sub">Entrevistas, prensa y medios</div>
+                <div class="agenda-item-title" data-i18n="press-tbc">Próximas apariciones por confirmar</div>
+                <div class="agenda-item-sub" data-i18n="press-sub">Entrevistas, prensa y medios</div>
               </div>
               <span class="agenda-item-badge badge-medio">Pronto</span>
             </div>
@@ -1922,7 +1955,7 @@
         <!-- Contenido derecha -->
         <div class="contact-right">
           <div class="contact-info reveal">
-            <h2 class="section-title contacto-title" style="-webkit-text-fill-color: white; color: white;">Contacto</h2>
+            <h2 class="section-title contacto-title" style="-webkit-text-fill-color: white; color: white;" data-i18n="contact-title">Contacto</h2>
             <a href="mailto:contacto@taniavegamusic.com" class="contact-email">
               contacto@taniavegamusic.com
             </a>
@@ -1931,8 +1964,8 @@
             <input type="hidden" name="_language" value="es" />
             <div class="form-row">
               <div class="form-group">
-                <label>Nombre</label>
-                <input type="text" name="nombre" placeholder="Tu nombre" required />
+                <label data-i18n="form-name">Nombre</label>
+                <input type="text" name="nombre" placeholder="Tu nombre" data-i18n-placeholder="form-name-ph" required />
               </div>
               <div class="form-group">
                 <label>Email</label>
@@ -1940,20 +1973,20 @@
               </div>
             </div>
             <div class="form-group">
-              <label>Motivo de contacto</label>
+              <label data-i18n="form-reason">Motivo de contacto</label>
               <select name="motivo">
-                <option value="">Selecciona una opción</option>
-                <option>Contratación / Booking</option>
-                <option>Prensa / Medios</option>
-                <option>Colaboración artística</option>
-                <option>Otros</option>
+                <option value="" data-i18n="form-select">Selecciona una opción</option>
+                <option data-i18n="form-booking">Contratación / Booking</option>
+                <option data-i18n="form-press">Prensa / Medios</option>
+                <option data-i18n="form-collab">Colaboración artística</option>
+                <option data-i18n="form-other">Otros</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Mensaje</label>
+              <label data-i18n="form-msg">Mensaje</label>
               <textarea name="mensaje" rows="4" placeholder="" required></textarea>
             </div>
-            <button type="submit" class="btn-submit" id="btn-submit">Enviar Mensaje ✦</button>
+            <button type="submit" class="btn-submit" id="btn-submit" data-i18n="form-send">Enviar Mensaje ✦</button>
           </form>
 
           <div id="contact-success" style="display:none; flex-direction:column; align-items:center; justify-content:center; padding:3rem 1rem; text-align:center; gap:1.2rem;">
@@ -2130,6 +2163,116 @@
 
     // Form submit
     // Formspree handles form submission natively
+
+    // ── IDIOMA ──
+    const i18n = {
+      es: {
+        'nav-home': 'Home',
+        'nav-bio': 'Biografía',
+        'nav-music': 'Música',
+        'nav-platforms': 'Plataformas',
+        'nav-social': 'Redes',
+        'nav-news': 'Noticias',
+        'nav-contact': 'Contacto',
+        'hero-listen': 'Escuchar Música',
+        'hero-contact': 'Contactar',
+        'bio-tag': '✦ Biografía',
+        'bio-p1': 'Nacida en Valencia, Tania Vega es cantante, compositora y productora musical. Actualmente se encuentra desarrollando su carrera artística de forma independiente, consolidando una propuesta auténtica y personal dentro del panorama musical contemporáneo.',
+        'bio-p2': 'Desde su debut como solista en 2024, ha lanzado siete singles originales, los cuales reflejan su sensibilidad artística y versatilidad creativa. Actualmente continúa trabajando en nuevas composiciones que formarán parte de sus próximos lanzamientos.',
+        'bio-p3': 'Ha llevado su música en directo a diversas salas de Madrid y Valencia, y se encuentra en constante búsqueda de nuevos espacios donde compartir su arte y conectar con el público. Su experiencia en escenarios es amplia, habiendo participado en diferentes eventos y colaboraciones tanto a nivel nacional como internacional desde temprana edad.',
+        'bio-p4': 'Formada en el conservatorio, su preparación musical abarca tanto el ámbito clásico como contemporáneo. Actualmente dirige un coro, actividad que complementa su faceta artística y que evidencia su compromiso con la música como medio de expresión colectiva.',
+        'music-tag': 'Discografía',
+        'music-title': 'Mi <span>Música</span>',
+        'music-soon': 'Próximamente 26/06/26',
+        'music-listen': 'Escuchar',
+        'mobile-folder': 'Mi Música',
+        'mobile-songs': '6 canciones',
+        'platforms-title': 'Escúchame en todas las <span>Plataformas</span>',
+        'social-title': 'Sígueme en mis <span>Redes Sociales</span>',
+        'news-title': 'Agenda & <span>Prensa</span>',
+        'concerts-title': 'Fechas de <span>Conciertos</span>',
+        'concerts-tbc': 'Próximas fechas por confirmar',
+        'concerts-sub': 'Mantente atento/a a las redes sociales',
+        'press-title': 'Apariciones en <span>Medios</span>',
+        'press-tbc': 'Próximas apariciones por confirmar',
+        'press-sub': 'Entrevistas, prensa y medios',
+        'contact-title': 'Contacto',
+        'form-name': 'Nombre',
+        'form-name-ph': 'Tu nombre',
+        'form-reason': 'Motivo de contacto',
+        'form-select': 'Selecciona una opción',
+        'form-booking': 'Contratación / Booking',
+        'form-press': 'Prensa / Medios',
+        'form-collab': 'Colaboración artística',
+        'form-other': 'Otros',
+        'form-msg': 'Mensaje',
+        'form-send': 'Enviar Mensaje ✦',
+      },
+      en: {
+        'nav-home': 'Home',
+        'nav-bio': 'Biography',
+        'nav-music': 'Music',
+        'nav-platforms': 'Platforms',
+        'nav-social': 'Social',
+        'nav-news': 'News',
+        'nav-contact': 'Contact',
+        'hero-listen': 'Listen to Music',
+        'hero-contact': 'Contact',
+        'bio-tag': '✦ Biography',
+        'bio-p1': 'Born in Valencia, Tania Vega is a singer, songwriter and music producer. She is currently developing her artistic career independently, building an authentic and personal voice within the contemporary music scene.',
+        'bio-p2': 'Since her solo debut in 2024, she has released seven original singles that reflect her artistic sensitivity and creative versatility. She continues to work on new compositions that will be part of her upcoming releases.',
+        'bio-p3': 'She has performed live across various venues in Madrid and Valencia, and is constantly seeking new spaces to share her art and connect with audiences. She has extensive stage experience, having participated in different events and collaborations both nationally and internationally from an early age.',
+        'bio-p4': 'Trained at the conservatory, her musical background spans both classical and contemporary fields. She currently leads a choir, an activity that complements her artistic side and demonstrates her commitment to music as a means of collective expression.',
+        'music-tag': 'Discography',
+        'music-title': 'My <span>Music</span>',
+        'music-soon': 'Coming Soon 26/06/26',
+        'music-listen': 'Listen',
+        'mobile-folder': 'My Music',
+        'mobile-songs': '6 songs',
+        'platforms-title': 'Listen to me on all <span>Platforms</span>',
+        'social-title': 'Follow me on <span>Social Media</span>',
+        'news-title': 'Schedule & <span>Press</span>',
+        'concerts-title': '<span>Concert</span> Dates',
+        'concerts-tbc': 'Upcoming dates to be confirmed',
+        'concerts-sub': 'Stay tuned on social media',
+        'press-title': '<span>Media</span> Appearances',
+        'press-tbc': 'Upcoming appearances to be confirmed',
+        'press-sub': 'Interviews, press and media',
+        'contact-title': 'Contact',
+        'form-name': 'Name',
+        'form-name-ph': 'Your name',
+        'form-reason': 'Reason for contact',
+        'form-select': 'Select an option',
+        'form-booking': 'Booking',
+        'form-press': 'Press / Media',
+        'form-collab': 'Artistic Collaboration',
+        'form-other': 'Other',
+        'form-msg': 'Message',
+        'form-send': 'Send Message ✦',
+      }
+    };
+
+    function setLang(lang) {
+      const t = i18n[lang];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.documentElement.lang = lang;
+      localStorage.setItem('tv_lang', lang);
+    }
+
+    // Cargar idioma guardado
+    (function() {
+      const saved = localStorage.getItem('tv_lang');
+      if (saved && saved !== 'es') setLang(saved);
+    })();
 
     // ── MI MÚSICA: acordeón móvil ──
     function toggleMiMusica() {
