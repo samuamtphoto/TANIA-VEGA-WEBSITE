@@ -17,7 +17,7 @@
     :root {
       --accent: #e040fb;
       --accent2: #7c4dff;
-      --accent3: #00A8CC;
+      --accent3: #e040fb;
       --dark: #0a0a0f;
       --dark2: #12121a;
       --text: #f0f0f0;
@@ -42,11 +42,26 @@
       z-index: 100;
       background: rgba(10,10,15,0.95);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0,168,204,0.2);
+      border-bottom: none;
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+    }
+
+    .medios-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(124,77,255,0.4) 20%, rgba(224,64,251,0.9) 50%, rgba(124,77,255,0.4) 80%, transparent 100%);
+      background-size: 200% auto;
+      animation: header-shimmer 4s linear infinite;
+    }
+
+    @keyframes header-shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
     }
 
     .header-logo {
@@ -88,8 +103,8 @@
 
     /* ── HERO STRIP ── */
     .medios-hero {
-      background: linear-gradient(135deg, rgba(0,168,204,0.12) 0%, rgba(124,77,255,0.08) 100%);
-      border-bottom: 1px solid rgba(0,168,204,0.15);
+      background: linear-gradient(135deg, rgba(224,64,251,0.1) 0%, rgba(124,77,255,0.12) 100%);
+      border-bottom: 1px solid rgba(224,64,251,0.15);
       padding: 4rem 2rem 3rem;
       text-align: center;
     }
@@ -101,7 +116,7 @@
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--accent3);
-      border: 1px solid rgba(0,168,204,0.35);
+      border: 1px solid rgba(224,64,251,0.35);
       border-radius: 20px;
       padding: 0.35rem 1rem;
       margin-bottom: 1.2rem;
@@ -162,7 +177,7 @@
 
     .filter-btn.active,
     .filter-btn:hover {
-      background: rgba(0,168,204,0.12);
+      background: rgba(224,64,251,0.12);
       border-color: var(--accent3);
       color: var(--accent3);
     }
@@ -189,8 +204,8 @@
 
     .medio-card:hover {
       transform: translateY(-5px);
-      border-color: rgba(0,168,204,0.3);
-      box-shadow: 0 15px 40px rgba(0,168,204,0.1);
+      border-color: rgba(124,77,255,0.4);
+      box-shadow: 0 15px 40px rgba(224,64,251,0.12);
     }
 
     .medio-card-img {
@@ -204,7 +219,7 @@
     .medio-card-img-placeholder {
       width: 100%;
       aspect-ratio: 16/9;
-      background: linear-gradient(135deg, rgba(0,168,204,0.08), rgba(124,77,255,0.08));
+      background: linear-gradient(135deg, rgba(224,64,251,0.08), rgba(124,77,255,0.08));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -238,7 +253,7 @@
     }
 
     .medio-tag.entrevista { background: rgba(224,64,251,0.15); color: var(--accent); }
-    .medio-tag.prensa     { background: rgba(0,168,204,0.15);  color: var(--accent3); }
+    .medio-tag.prensa     { background: rgba(224,64,251,0.15);  color: var(--accent3); }
     .medio-tag.tv         { background: rgba(255,80,80,0.15);   color: #ff5050; }
     .medio-tag.radio      { background: rgba(255,165,0,0.15);   color: orange; }
 
